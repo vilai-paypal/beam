@@ -175,6 +175,9 @@ abstract class SpannerSchema implements Serializable {
       if ("NUMERIC".equals(spannerType)) {
         return Type.numeric();
       }
+      if ("JSON".equals(spannerType)) {
+        return Type.json(); // https://github.com/googleapis/java-spanner/blob/main/google-cloud-spanner/src/main/java/com/google/cloud/spanner/Type.java#L100
+      }
 
       if (spannerType.startsWith("ARRAY")) {
         // Substring "ARRAY<xxx>"
